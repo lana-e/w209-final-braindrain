@@ -9,23 +9,9 @@ with open('./static/dashboard-lana.json', 'r') as spec_lana:
 with open('./static/dashboard-li.json', 'r') as spec_li:
     dash_li = spec_li.read()
 
-
-# @app.route("/")
-# def index():
-#     return render_template('index.html', title="page", jsonfile=json.dumps(lana_dash))
-
 @app.route("/")
 def index():
     return render_template("index.html", dash_lana=dash_lana, dash_li=dash_li)
 
 if __name__ == "__main__":
     app.run()
-
-
-# from flask import Flask
-
-# app = Flask(__name__)
-
-# @app.route("/")
-# def hello_world():
-#     return "<p>Hello, World!</p>"

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+</head>
+    
+<body>
+    
+<!--     divs for visualizations -->
+<!--     <div id="test">
+        <div id="test">Test</div>
+    </div> -->
+    <div id="vis1">
+        <div id="vis_lana"/>
+    </div>
+    <hr/>
+    <div id="vis2">
+        <p>Where are immigrants coming from?</p>
+        <div id="vis_li"/>
+    </div>
+    
+<!--     scripts to fill divs-->
+    <script>
+      var dash_lana = JSON.parse({{dash_lana|tojson|safe}});
+      vegaEmbed("#vis_lana", dash_lana, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    </script>
+    <script>
+      var dash_li = JSON.parse({{dash_li|tojson|safe}});
+      vegaEmbed("#vis_li", dash_li, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    </script>
+
+</body>
+</html>

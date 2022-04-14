@@ -1,25 +1,62 @@
 <!DOCTYPE html>
 <html>
-    
 <head>
+    <style>
+        h1, h2, h3, h4 {text-align: center; line-height: 15px;}
+        p {text-align: center;}
+        div {text-align: center;}
+        .vis {margin: 0 auto;}
+        #vis_lana {border:1px solid black;}
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/vega@5.22.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
 </head>
     
 <body>
-    
-<!--     divs for visualizations -->
-<!--     <div id="test">
-        <div id="test">Test</div>
-    </div> -->
-    <div id="vis1">
-        <div id="vis_lana"/>
+    <h1>Brain Drain Around the World</h1>
+    <h2>Where Are Educated People and Skilled Labor Moving?</h2>
+    <p>MIDS W209 Final Project</p>
+    <p>Lana Elauria, Li Jin, Russell Ude, Gabe Louis-Kayen, Mounica Reddy</p>
+    <hr/>
+    <h3>Where are immigrants going?</h3>
+    <p>Credit: Gabe Louis-Kayen</p>
+    <p>Click and drag to move the map, and scroll on the map to zoom in/out!</p>
+    <div class='tableauPlaceholder' id='viz1649901668214' style='position: relative'><noscript><a href='#'><img alt='Migration Rates by Country ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;Country_Migration_Final&#47;Country&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Country_Migration_Final&#47;Country' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;Country_Migration_Final&#47;Country&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object>
+    </div>
+    <script type='text/javascript'>
+        var divElement = document.getElementById('viz1649901668214');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.width='100%';
+        vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+    <div class='tableauPlaceholder' id='viz1649901559262' style='position: relative'><noscript><a href='#'><img alt='Region ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;Region_Migration_Final&#47;Region&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Region_Migration_Final&#47;Region' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;Region_Migration_Final&#47;Region&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>
+    <script type='text/javascript'>
+        var divElement = document.getElementById('viz1649901559262');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+    <hr/>
+    <h3>What is the distribution of education among migrants?</h3>
+    <p>Credit: Lana Elauria</p>
+    <div id="vis1" class="vis">
+        <div id="vis_lana" class="vis-inner"/>
     </div>
     <hr/>
-    <div id="vis2">
-        <p>Where are immigrants coming from?</p>
-        <div id="vis_li"/>
+    <h3>Where are immigrants coming from?</h3>
+    <p>Credit: Li Jin</p>
+    <p>We've selected some example countries for exploration. Click and drag to filter the countries in the graphs!</p>
+    <div id="vis2" class="vis">
+        <div id="vis_li_usa" class="vis-inner"/>
+    </div>
+    <div id="vis3" class="vis">
+        <div id="vis_li_jpn" class="vis-inner"/>
     </div>
     
 <!--     scripts to fill divs-->
@@ -28,8 +65,12 @@
       vegaEmbed("#vis_lana", dash_lana, {mode: "vega-lite"}).then(console.log).catch(console.warn);
     </script>
     <script>
-      var dash_li = JSON.parse({{dash_li|tojson|safe}});
-      vegaEmbed("#vis_li", dash_li, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+      var dash_li_usa = JSON.parse({{dash_li_usa|tojson|safe}});
+      vegaEmbed("#vis_li_usa", dash_li_usa, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    </script>
+    <script>
+      var dash_li_jpn = JSON.parse({{dash_li_jpn|tojson|safe}});
+      vegaEmbed("#vis_li_jpn", dash_li_jpn, {mode: "vega-lite"}).then(console.log).catch(console.warn);
     </script>
 
 </body>
